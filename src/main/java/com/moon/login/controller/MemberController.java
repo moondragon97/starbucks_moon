@@ -3,12 +3,14 @@ package com.moon.login.controller;
 import com.moon.login.entity.Member;
 import com.moon.login.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.Map;
+
+@RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class MemberController {
     @Autowired
     MemberService service;
@@ -23,16 +25,13 @@ public class MemberController {
     }
 
     @PostMapping("/member_login")
-    public String login(String userId, String password, Model model){
-        System.out.println(userId);
-        Member member = service.doSelectOne(userId);
-        System.out.println(password);
-        if(member == null || !(member.getPassword().equals(password))){
-            System.out.println("in");
-            model.addAttribute("errorMessage", "아이디 및 비밀번호를 다시 확인해 주세요.");
-            model.addAttribute("userId", userId);
-            return "/member/login";
+    public ResponseEntity<String> login(@RequestBody Member member) {
+        String userId = member.getUserId();
+        String password = member.getPassword();
+        Member storedMember = service.doSelectOne(userId);
+        if (storedMember == null || !storedMember.getPassword().equals(password)) {
+            return new ResponseEntity<>("아이디 및 비밀번호를 다시 확인해 주세요.", HttpStatus.UNAUTHORIZED);
         }
-        return "redirect:/member-list";
+        return new ResponseEntity<>("로그인 성공", HttpStatus.OK);
     }
 }

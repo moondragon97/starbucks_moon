@@ -1,29 +1,15 @@
-import logo from './logo.svg';
-import React, {useState} from "react";
-import './App.css';
+import React from "react";
+import {BrowserRouter, Route} from "react-router-dom";
+import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage";
 
 function App() {
-    const [num, setNum] = useState(0);
-    const [numList, setNumList] = useState([]);
-
-    function recording(){
-        setNumList([...numList, num]);
-
-        setNum(0);
-    }
   return (
-    <div className="App">
-        <h1>{num}</h1>
-        <button onClick={()=>{setNum(num+1)}}> 숫자증가</button>
-        <button onClick={()=>{setNum(num-1)}}> 숫자감소</button>
-        <p><button onClick={()=>{recording()}}>기록</button></p>
-        <p>기록숫자</p>
-        <ul>
-            {numList.map((rec) => (
-                <li>{rec}</li>
-                ))}
-        </ul>
-
+    <div>
+        <BrowserRouter>
+            <Route path="/login" exact={true} component={LoginPage}/>
+            <Route path="/signup" exact={true} component={SignupPage}/>
+        </BrowserRouter>
     </div>
   );
 }

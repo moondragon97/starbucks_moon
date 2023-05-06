@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import "./Login.css";
+import {Link} from "react-router-dom";
 
 const Login = () => {
     const minIdLen = 5;
@@ -47,7 +49,7 @@ const Login = () => {
     return (
         <div className="page">
             <div className="titleWrap">
-                아이디와 비밀번호를 입력해 주세요.
+                로그인
             </div>
             <div className="contentWrap">
                 <div className="inputTitle">아이디</div>
@@ -82,9 +84,15 @@ const Login = () => {
             <div>
                 <button
                     disabled={!isValidPw || !isValidId}
-                    className="bottomBtn"
+                    className="btnBottom btnSignin"
                     onClick={clickLoginBtn}
-                >확인</button>
+                >로그인</button>
+            </div>
+            <div>
+                <Link to="/signup"
+                    className="btnBottom btnSignup">
+                    회원가입
+                </Link>
             </div>
         </div>
     );
