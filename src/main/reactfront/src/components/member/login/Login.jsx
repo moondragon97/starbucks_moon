@@ -1,15 +1,10 @@
 import React, {useState} from 'react';
-import "./Signup.css";
+import "./Login.css";
+import {Link, useHistory} from "react-router-dom";
+import {idRegExp, minPwLen, pwRegExp} from "../memberCommon";
 
-const Signup = () => {
-    const minIdLen = 5;
-    const maxIdLen = 20;
-    const minPwLen = 8;
-    const maxPwLen = 20;
-
-    const idRegExp = new RegExp(`^[a-z0-9_-]{${minIdLen},${maxIdLen}}$`);
-    const pwRegExp = new RegExp(`^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{${minPwLen},${maxPwLen}}$`);
-
+const Login = () => {
+    const history = useHistory();
     const [inputId, setInputId] = useState("");
     const [inputPw, setInputPw] = useState("");
 
@@ -46,49 +41,50 @@ const Signup = () => {
         setIsValidPw(pwRegExp.test(_input));
     }
     return (
-        <div className="page">
-            <div className="titleWrap">
-                회원가입
+        <div className="login_page">
+            <div className="login_titleWrap">
+                로그인
             </div>
-            <div className="contentWrap">
-                <div className="inputTitle">아이디</div>
-                <div className="inputWrap">
+            <div className="login_contentWrap">
+                <div className="login_inputTitle">아이디</div>
+                <div className="login_inputWrap">
                     <input
-                        className="input"
+                        className="login_input"
                         placeholder="아이디를 입력해 주세요."
                         value={inputId}
                         onChange={handleId}
                     />
                 </div>
-                <div className="errorMessageWrap">
+                <div className="login_errorMessageWrap">
                     {
                         isValidId ? "" : "올바른 아이디를 입력해 주세요."
                     }
                 </div>
 
-                <div className="inputTitle" style={{marginTop: "26px"}}>비밀번호</div>
-                <div className="inputWrap">
+                <div className="login_inputTitle" style={{marginTop: "26px"}}>비밀번호</div>
+                <div className="login_inputWrap">
                     <input
-
-                        className="input"
-                        placeholder="영문, 숫자, 특수문자 포함 8자 이상을 입력해 주세요."
+                        className="login_input"
+                        placeholder={`영문, 숫자, 특수문자 포함 ${minPwLen}자 이상을 입력해 주세요.`}
                         value={inputPw}
                         onChange={handlePw}
                     />
                 </div>
-                <div className="errorMessageWrap">
+                <div className="login_errorMessageWrap">
                     {isValidPw ? "" : "영문, 숫자, 특수문자 포함 8자 이상을 입력해 주세요."}
                 </div>
             </div>
             <div>
                 <button
                     disabled={!isValidPw || !isValidId}
-                    className="btnBottom btnSignin"
+                    className="login_btnBottom login_btnSignin"
                     onClick={clickLoginBtn}
                 >로그인</button>
             </div>
             <div>
-                <button className="btnBottom btnSignup">
+                <button
+                    className="login_btnBottom login_btnSignup"
+                    onClick={()=>history.push("/signup")}>
                     회원가입
                 </button>
             </div>
@@ -96,4 +92,4 @@ const Signup = () => {
     );
 };
 
-export default Signup;
+export default Login;
