@@ -5,3 +5,4 @@ export const maxPwLen = 20;
 
 export const idRegExp = new RegExp(`^[a-z0-9_-]{${minIdLen},${maxIdLen}}$`);
 export const pwRegExp = new RegExp(`^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{${minPwLen},${maxPwLen}}$`);
+export const emailRegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;

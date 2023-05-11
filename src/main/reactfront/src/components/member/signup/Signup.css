@@ -26,21 +26,28 @@
 }
 
 .signup_contentWrap{
-    margin-top: 60px;
+    margin-top: 50px;
     flex:1;
+}
+
+.signup_columnWrap{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
 }
 
 .signup_inputTitle{
     font-size: 12px;
     font-weight: 600;
     color: #262626;
+    width: 20%;
 }
 
 .signup_inputWrap{
-    display: flex;
+    width: 50%;
     border-radius: 8px;
-    padding: 16px;
-    margin-top: 8px;
+    padding: 8px;
     background-color: white;
     border: 1px solid #e2e0e0;
 }
@@ -60,6 +67,14 @@
 
 .signup_input::placeholder{
     color: #dadada;
+}
+
+.signup_idConfirmWrap{
+    width: 20%;
+}
+
+.signup_btnIdConfirm{
+    float: right;
 }
 
 .signup_errorMessageWrap{

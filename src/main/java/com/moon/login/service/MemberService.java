@@ -10,8 +10,11 @@ import java.util.Optional;
 @Service
 public class MemberService {
 
-    @Autowired
-    MemberRepository repo;
+    final MemberRepository repo;
+
+    public MemberService(MemberRepository repo) {
+        this.repo = repo;
+    }
 
     public void doInsert(Member member){
         repo.save(member);

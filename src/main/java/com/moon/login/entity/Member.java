@@ -19,7 +19,5 @@ public class Member {
 
     private String userName;
 
-    private String phoneNo;
-
     private String email;
 }
