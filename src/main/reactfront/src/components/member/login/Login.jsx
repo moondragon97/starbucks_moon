@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import "./Login.css";
 import {useHistory} from "react-router-dom";
-import {idRegExp, minPwLen, pwRegExp} from "../memberCommon";
-import {URL_BASE, URL_LOGIN} from "../../statics/links";
+import {idRegExp, minPwLen, pwRegExp} from "../MemberCommon";
+import {URL_BASE, URL_LOGIN} from "../../statics/Links";
 
 const Login = () => {
     const history = useHistory();
@@ -28,7 +28,7 @@ const Login = () => {
             body: JSON.stringify({ 'userId': userId, 'password': password })
         }).then(res=>{
             if(res.ok){
-                alert("로그인 성공");
+                history.push("/main");
             }else{
                 alert("로그인 실패");
             }

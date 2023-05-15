@@ -1,12 +1,12 @@
 import React from 'react';
-import Main from "../components/member/board/Main";
+import Board from "../components/board/Board";
 
-const MainPage = () => {
+const BoardPage = () => {
     return (
         <div>
-            <Main />
+            <Board />
         </div>
     );
 };
 
-export default MainPage;
+export default BoardPage;

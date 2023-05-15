@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import "./Signup.css";
-import {emailRegExp, pwRegExp} from "../memberCommon";
+import {emailRegExp, pwRegExp} from "../MemberCommon";
 import {useHistory} from "react-router-dom";
-import {URL_BASE, URL_CHK_DUPLICATE_ID, URL_SIGNUP} from "../../statics/links";
+import {URL_BASE, URL_CHK_DUPLICATE_ID, URL_SIGNUP} from "../../statics/Links";
 
 const Signup = () => {
     const history = useHistory();
