@@ -1,0 +1,32 @@
+.board_itemWrap{
+    width: 500px;
+    display: table;
+    border-collapse: collapse;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+}
+
+.board_itemWrap:last-child{
+    border-bottom: 1px solid black;
+}
+
+.board_titleText{
+    display: table-cell;
+    width: 280px;
+    border-right: solid 1px black;
+    padding-left: 5px;
+}
+
+.board_authorText{
+    display: table-cell;
+    width: 130px;
+    border-right: solid 1px black;
+    text-align: center;
+}
+
+.board_createAtText{
+    display: table-cell;
+    width: 90px;
+    border-right: solid 1px black;
+    text-align: center;
+}

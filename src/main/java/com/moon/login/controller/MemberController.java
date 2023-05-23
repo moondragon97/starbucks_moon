@@ -37,12 +37,11 @@ public class MemberController {
     }
 
     @PostMapping("/signup")
-    public String insert(@RequestBody Member member){
-        System.out.println(member.getUserName());
+    public ResponseEntity<HttpStatus> insert(@RequestBody Member member){
         // TODO: 비밀번호 암호화
 
         service.doInsert(member);
-        return "forward:/login";
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/login")

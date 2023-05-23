@@ -66,18 +66,17 @@ const Signup = () => {
         if(!isValidPwConfirm){
             msg = "비밀번호가 일치하지 않습니다.";
         }
-        if(emailRegExp.test(inputEmail)){
+        if(!emailRegExp.test(inputEmail)){
             msg = "이메일을 다시 확인해 주세요.";
         }
         if(inputNm.length < 1){
             msg = "이름을 입력해 주세요.";
         }
 
-        if(msg !== ""){
+        if(msg !== "") {
             alert(msg);
             return;
         }
-        console.log(inputNm);
 
         fetch(`${URL_BASE}${URL_SIGNUP}`,{
             method: "POST",
@@ -90,8 +89,13 @@ const Signup = () => {
                 'userName' : inputNm,
                 'email' : inputEmail
             })
-        }).then(response =>
-            console.log(response)
+        }).then(response => {
+                if (response.ok) {
+                    history.push("/login");
+                }else{
+                    alert("회원가입 실패");
+                }
+            }
         ).catch(error =>
             console.log(error));
     }

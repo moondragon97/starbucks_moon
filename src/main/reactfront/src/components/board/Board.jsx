@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import {Link} from "react-router-dom";
 import {URL_BASE, URL_BOARD_LIST} from "../statics/Links";
 import BoardItem from "./board_items/BoardItem";
+import Top from "../common/top/top";
 
 const Board = () => {
     const [boards, setBoards] = useState([]);
@@ -19,9 +19,9 @@ const Board = () => {
     return (
         <div>
             <div>
-                <Link to={'/login'}>로그아웃</Link>
+                <Top />
             </div>
-            <div>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection:'column'}}>
                 {boards.map((board) => (
                     <BoardItem key={board.id} boards={board} />
                 ))}

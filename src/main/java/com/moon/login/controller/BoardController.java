@@ -2,11 +2,9 @@ package com.moon.login.controller;
 
 import com.moon.login.entity.Board;
 import com.moon.login.service.BoardService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,5 +23,12 @@ public class BoardController {
     public ResponseEntity<List<Board>> selectAll(){
         List<Board> boards = service.doSelectAll();
         return ResponseEntity.ok(boards);
+    }
+
+    @PostMapping("/insert")
+    public ResponseEntity<HttpStatus> insert(@RequestBody Board board){
+        service.doInsert(board);
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
